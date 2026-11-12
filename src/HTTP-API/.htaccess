@@ -1,0 +1,4 @@
+# keep DB credentials, helpers and schema private
+<FilesMatch "^(config(\.sample)?\.php|lib\.php|schema\.sql)$">
+  Require all denied
+</FilesMatch>

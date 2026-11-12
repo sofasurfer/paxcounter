@@ -1,5 +1,5 @@
 // clang-format off
-// upload_speed 921600
+// upload_speed 115200
 // board esp32dev
 
 #ifndef _TTGOV21NEW_H
@@ -12,8 +12,9 @@
 // This settings are for boards labeled v1.6 or v1.6.1 on pcb, NOT for v1.5 or older
 */
 
-#define HAS_LORA         1 // comment out if device shall not send data via LoRa
-#define CFG_sx1276_radio 1 // HPD13A LoRa SoC
+//#define HAS_LORA         1 // disabled: upload via WiFi/HTTP, frees RAM for TLS
+#define HAS_HTTP           // upload counts via WiFi + HTTP(S), see HTTP_* in paxcounter.conf
+//#define CFG_sx1276_radio 1 // HPD13A LoRa SoC
 
 // enable only if you want to store a local paxcount table on the device
 #define HAS_SDCARD  2      // this board has a SD MMC card-reader/writer

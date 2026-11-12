@@ -33,6 +33,7 @@ spiloop#      	0     2    reads/writes data on spi interface
 lmictask*     	1     2    MCCI LMiC LORAWAN stack
 clockloop#    	1     6    generates realtime telegrams for external clock
 mqttloop#     	1     5    reads/writes data on ETH interface
+httploop        1     1    uploads counts via WiFi + HTTP(S)
 timesync_proc#	1     7    processes realtime time sync requests
 irqhandler#   	1     4    application IRQ (i.e. displayrefresh)
 gpsloop*      	1     1    reads data from GPS via serial or i2c
@@ -373,6 +374,12 @@ void setup() {
 #ifdef HAS_MQTT
   strcat_P(features, " MQTT");
   _ASSERT(mqtt_init() == ESP_OK);
+#endif
+
+// initialize HTTP upload
+#ifdef HAS_HTTP
+  strcat_P(features, " HTTP");
+  _ASSERT(http_init() == ESP_OK);
 #endif
 
 #if (HAS_SDS011)

@@ -119,6 +119,10 @@ void sendData() {
       );
 #endif // HAS_SDCARD
 
+#ifdef HAS_HTTP
+      http_enqueuecount(&count);
+#endif
+
       SendPayload(COUNTERPORT);
       break; // case COUNTDATA
 
@@ -194,6 +198,9 @@ void flushQueues(void) {
 #ifdef HAS_MQTT
   mqtt_queuereset();
 #endif
+#ifdef HAS_HTTP
+  http_queuereset();
+#endif
 }
 
 bool allQueuesEmtpy(void) {
@@ -206,6 +213,9 @@ bool allQueuesEmtpy(void) {
 #endif
 #ifdef HAS_MQTT
   rc += mqtt_queuewaiting();
+#endif
+#ifdef HAS_HTTP
+  rc += http_queuewaiting();
 #endif
   return (rc == 0) ? true : false;
 }

@@ -143,6 +143,11 @@ void enter_deepsleep(uint32_t wakeup_sec, gpio_num_t wakeup_gpio) {
   mqtt_deinit();
 #endif
 
+// shutdown HTTP upload safely
+#ifdef HAS_HTTP
+  http_deinit();
+#endif
+
 // shutdown SPI safely
 #ifdef HAS_SPI
   spi_deinit();

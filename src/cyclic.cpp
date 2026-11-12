@@ -56,6 +56,12 @@ void doHousekeeping() {
              uxTaskGetStackHighWaterMark(mqttTask), eTaskGetState(mqttTask));
 #endif
 
+#ifdef HAS_HTTP
+  if (httpTask != NULL)
+    ESP_LOGD(TAG, "HTTPloop %d bytes left | Taskstate = %d",
+             uxTaskGetStackHighWaterMark(httpTask), eTaskGetState(httpTask));
+#endif
+
 #if (defined HAS_DCF77 || defined HAS_IF482)
   if (ClockTask != NULL)
     ESP_LOGD(TAG, "Clockloop %d bytes left | Taskstate = %d",

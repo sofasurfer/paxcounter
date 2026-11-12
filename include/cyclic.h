@@ -6,6 +6,7 @@
 #include "rcommand.h"
 #include "spislave.h"
 #include "mqttclient.h"
+#include "paxhttp.h"
 #include "bmesensor.h"
 #include "display.h"
 #include "sds011read.h"

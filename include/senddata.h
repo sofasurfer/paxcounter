@@ -3,6 +3,7 @@
 
 #include "spislave.h"
 #include "mqttclient.h"
+#include "paxhttp.h"
 #include "cyclic.h"
 #include "sensor.h"
 #include "lorawan.h"
